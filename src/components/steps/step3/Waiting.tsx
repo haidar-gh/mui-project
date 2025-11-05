@@ -15,7 +15,7 @@ export default function Waiting() {
                     gap: '7px'
                 }}
             >
-                <img style={{ width: '41px', height: '41px' }} src="/public/images/waiting.svg" alt="" />
+                <img style={{ width: '41px', height: '41px' }} src="/images/waiting.svg" alt="" />
                 <Typography
                     sx={{
                         fontSize: '32px',

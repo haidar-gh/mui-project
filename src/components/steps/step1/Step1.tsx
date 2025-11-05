@@ -217,7 +217,7 @@ export default function Step1() {
                     </Typography>
                 </Card>
                 <Button onClick={exChangeHandler} sx={{ width: '69px', height: '69px', backgroundColor: '#242C39', borderRadius: '50%', color: '#F3AC76', position: 'absolute', top: '39%', left: 'calc(50% - 34px)' }}>
-                   <img src="/public/images/Group 4.png" alt="" />
+                   <img src="/images/Group 4.png" alt="" />
                 </Button>
                 <Card sx={{
                     mt: '27px',
