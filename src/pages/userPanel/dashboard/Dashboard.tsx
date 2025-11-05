@@ -1,8 +1,8 @@
-import { Box, IconButton, InputAdornment, TextField, Typography, Chip, Pagination } from "@mui/material";
+import { Box, IconButton, InputAdornment, TextField, Typography,  Pagination } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { rowsDashboard } from "../../../mock-data/data";
-import { useState, type SetStateAction } from "react";
+import { useState} from "react";
 import { columnsDashboard } from "../../../columns/columns";
 
 export default function Dashboard() {

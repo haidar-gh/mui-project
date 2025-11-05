@@ -107,7 +107,7 @@ export default function Login() {
           validationSchema={toFormikValidationSchema(registerSchema)}
           onSubmit={handleSubmit}
         >
-          {({ errors, touched, handleChange, values, setFieldValue }) => (
+          {({ errors, touched, values, setFieldValue }) => (
             <Box component={Form} noValidate>
               <Stack direction='column' justifyContent='center' spacing={2}>
 
