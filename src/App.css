@@ -1,0 +1,44 @@
+* {
+  padding: 0;
+}
+
+.header-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  background-color: 'transparent';
+  text-transform: 'none';
+  font-weight: 500;
+  transition: color 150ms ease-in;
+  position: relative;
+}
+
+.header-link:hover {
+  color: #2ED4A7;
+}
+
+
+.MuiDataGrid-root {
+  --DataGrid-t-color-border-base: transparent !important;
+}
+
+.MuiDataGrid-root {
+  --DataGrid-t-header-background-base: #242C39 !important;
+
+
+}
+
+.mui-10iznbg-MuiDataGrid-root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff00 inset !important;
+  -webkit-text-fill-color: #fff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
