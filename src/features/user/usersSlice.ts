@@ -13,7 +13,14 @@ interface UsersState {
 }
 
 const initialState: UsersState = {
-  users: []
+  users: [
+    {
+      fullname: "haidargharavi",
+      email: "haidar@gmail.ocm",
+      password: "12345678",
+      islogin: false,
+    }
+  ]
 };
 
 const usersSlice = createSlice({

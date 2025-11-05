@@ -22,9 +22,9 @@ const loginSchema = z.object({
 })
 
 const initialValues = {
-  email: '',
-  password: '',
-  remember: false,
+  email: 'haidar@gmail.ocm',
+  password: '12345678',
+  remember: true,
 }
 
 export default function Login() {
@@ -87,6 +87,7 @@ export default function Login() {
                   Email:
                 </Typography>
                 <TextField
+                  
                   name='email'
                   type='email'
                   placeholder='Please enter your Email'
