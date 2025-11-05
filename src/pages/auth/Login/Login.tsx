@@ -22,7 +22,7 @@ const loginSchema = z.object({
 })
 
 const initialValues = {
-  email: 'haidar@gmail.ocm',
+  email: 'haidar@gmail.com',
   password: '12345678',
   remember: true,
 }

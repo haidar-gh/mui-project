@@ -16,10 +16,10 @@ const initialState: UsersState = {
   users: [
     {
       fullname: "haidargharavi",
-      email: "haidar@gmail.ocm",
+      email: "haidar@gmail.com",
       password: "12345678",
       islogin: false,
-    }
+    },
   ]
 };
 
