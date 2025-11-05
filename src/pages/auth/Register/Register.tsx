@@ -32,9 +32,7 @@ export default function Login() {
   const [pass, setPass] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
-  const [fullname, setFullname] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+
 
   const navigate = useNavigate()
 
@@ -47,7 +45,7 @@ export default function Login() {
 
 
 
-  const handleSubmit = (values: typeof initialValues, { resetForm }: any) => {
+  const handleSubmit = (values: typeof initialValues, {  }: any) => {
     console.log('mmd')
 
     dispatch(addUser({
@@ -65,13 +63,11 @@ export default function Login() {
     const value = e.target.value
 
     setFieldValue('name', value)
-    setFullname(value)
   }
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, setFieldValue: (field: string, value: string) => void) => {
     const value = e.target.value
 
     setFieldValue('email', value)
-    setEmail(value)
   }
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, setFieldValue: (field: string, value: string) => void) => {
@@ -79,7 +75,6 @@ export default function Login() {
 
     // ست کردن مقدار در Formik
     setFieldValue('password', value)
-    setPassword(value)
 
     const onlyNumbers = /^[0-9]+$/
     const onlyLowercase = /^[a-z]+$/

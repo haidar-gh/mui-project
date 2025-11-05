@@ -1,10 +1,8 @@
 import { Box, IconButton, InputAdornment, TextField, Typography, Chip, Pagination } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
-import type { GridColDef } from '@mui/x-data-grid';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { Link } from "react-router-dom";
 import { rowsDashboard } from "../../../mock-data/data";
-import { useState } from "react";
+import { useState, type SetStateAction } from "react";
 import { columnsDashboard } from "../../../columns/columns";
 
 export default function Dashboard() {
@@ -114,7 +112,7 @@ export default function Dashboard() {
                     <Pagination
                         count={Math.ceil(rowsDashboard.length / pageSize)}
                         page={page}
-                        onChange={(e, newPage) => setPage(newPage)}
+                        onChange={( newPage:any ) => setPage(newPage) }
                         showFirstButton={false}
                         showLastButton={false}
                         siblingCount={0}

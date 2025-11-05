@@ -2,7 +2,7 @@ import { Visibility, VisibilityOff, } from '@mui/icons-material'
 import { InputAdornment, IconButton } from '@mui/material'
 import { Box, Button, Card, Stack, TextField, Typography } from '@mui/material'
 import { Formik, Form } from 'formik'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 import { useNavigate } from 'react-router-dom'
@@ -21,7 +21,6 @@ const initialValues = {
 export default function Login() {
   const [pass, setPass] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
 
@@ -29,7 +28,7 @@ export default function Login() {
     setShowPassword(!showPassword)
   }
 
-  const handleSubmit = (values: typeof initialValues, { resetForm }: any) => {
+  const handleSubmit = (values: typeof initialValues, { }: any) => {
 
     if (values.password == values.repeatPassword) {
       navigate('/auth/login')
@@ -45,7 +44,6 @@ export default function Login() {
 
     // ست کردن مقدار در Formik
     setFieldValue('password', value)
-    setPassword(value)
 
     const onlyNumbers = /^[0-9]+$/
     const onlyLowercase = /^[a-z]+$/

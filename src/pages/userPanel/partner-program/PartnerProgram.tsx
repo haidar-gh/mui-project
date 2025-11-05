@@ -354,7 +354,7 @@ export default function PartnerProgram() {
           <Pagination
             count={Math.ceil(rowsPartner.length / pageSize)}
             page={page}
-            onChange={( e , newPage) => setPage(newPage)}
+            onChange={(newPage: any) => setPage(newPage)}
             showFirstButton={false}
             showLastButton={false}
             siblingCount={1}
