@@ -108,7 +108,7 @@ export default function Step1() {
     }
 
     return (
-        <Container maxWidth='sm'>
+        <Container maxWidth='sm' sx={{mb: '154px'}}>
             <Stack sx={{ position: 'relative' }}>
                 <Card sx={{
                     mt: '35px',
