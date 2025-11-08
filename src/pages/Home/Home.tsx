@@ -10,11 +10,11 @@ import Step1 from '../../components/steps/step1/Step1';
 import Step2 from '../../components/steps/step2/Step2';
 import Step3 from '../../components/steps/step3/Step3';
 import { setStep } from '../../features/step/stepsSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { resetStep } from '../../features/step/stepsSlice';
 
 
-const CustomConnector = styled(StepConnector)(({  }) => ({
+const CustomConnector = styled(StepConnector)(({ }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
     top: 22,
 
@@ -55,10 +55,11 @@ const CustomStepIconRoot = styled('div')<{ ownerState: { active?: boolean; compl
 );
 
 function CustomStepIcon(props: any) {
-  const { active, completed, icon } = props;
+  const { active, completed, icon, hideTicks } = props;
+
   return (
-    <CustomStepIconRoot ownerState={{ active, completed }} sx={{}}>
-      {completed ? <Check sx={{ fontSize: 20 }} /> : icon}
+    <CustomStepIconRoot ownerState={{ active, completed }}>
+      {completed && !hideTicks ? <Check sx={{ fontSize: 20 }} /> : icon}
     </CustomStepIconRoot>
   );
 }
@@ -66,19 +67,22 @@ function CustomStepIcon(props: any) {
 export default function Home() {
   const steps = [' Exchange', 'Confirm', 'Complete'];
 
+  const [hideTicks, setHideTicks] = useState(false);
+
   const step = useSelector((state: RootState) => state.steps)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(resetStep())
-  },[])
+  }, [])
 
-  const backHandler = (index : number) => {
-    if(step.step > index) {
+  const backHandler = (index: number) => {
+    if (step.step > index) {
       dispatch(setStep(index))
     }
   }
+
 
   return (
     <Container maxWidth='lg'>
@@ -105,11 +109,13 @@ export default function Home() {
                 <StepLabel
                   onClick={() => backHandler(index)}
                   {...labelProps}
-                  StepIconComponent={CustomStepIcon}
+                  StepIconComponent={(props) => (
+                    <CustomStepIcon {...props} hideTicks={hideTicks} />
+                  )}
                   sx={{
                     cursor: isActive ? 'pointer' : '-moz-grab',
                     '& .MuiStepLabel-label': {
-                      color: isActiveOrPassed ? '#40A578 !important ' : '#9ca3af',
+                      color: isActiveOrPassed ? '#40A578 !important' : '#9ca3af',
                       fontWeight: isActiveOrPassed ? 'bold' : 'normal',
                       transition: 'all 0.3s ease',
                     },
@@ -121,10 +127,10 @@ export default function Home() {
             );
           })}
         </Stepper>
-        { step.step == 0 ? <Step1 /> : step.step == 1  ? <Step2/>  : step.step == 2 && <Step3/> }
-        
-        
-        
+        {step.step == 0 ? <Step1 /> : step.step == 1 ? <Step2 /> : step.step == 2 && <Step3 setHideTicks={setHideTicks} />}
+
+
+
 
       </Box>
     </Container>

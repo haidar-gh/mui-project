@@ -152,12 +152,13 @@ export default function ContactUs() {
                   minRows={4}
                   placeholder='Please Enter Your Text'
                   style={{
+                    fontWeight: '900',
                     width: '100%',
                     backgroundColor: '#242C39',
                     color: '#fff',
                     padding: '12px 16px',
                     borderRadius: '8px',
-                    fontSize: '16px',
+                    fontSize: '18px',
                     border: 'none',
                     resize: 'none',
                     outline: 'none',

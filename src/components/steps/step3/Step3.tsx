@@ -10,11 +10,20 @@ import Success from './Success'
 import PmToThether from './PmToThether'
 import Waiting from './Waiting'
 
-export default function Step3() {
+export default function Step3({ setHideTicks }: { setHideTicks: (value: boolean) => void }) {
     const steps = useSelector((state: RootState) => state.steps)
 
     const [time, setTime] = useState(600);
     const [stepStatus, setStepStatus] = useState(steps.type)
+
+    useEffect(() => {
+        // ⛔ بررسی وضعیت برای حذف تیک‌ها
+        if (['success', 'waiting', 'timeout'].includes(stepStatus)) {
+          setHideTicks(true);
+        } else {
+          setHideTicks(false);
+        }
+      }, [stepStatus]);
 
     useEffect(() => {
         if (time <= 0) {
@@ -27,17 +36,12 @@ export default function Step3() {
         }
     }, [time]);
 
+  const successHandler = () => setStepStatus('success');
+  const waitingHandler = () => setStepStatus('waiting');
+
+
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-
-
-    const successHandler = () => {
-        setStepStatus('success')
-    }
-
-    const waitingHandler = () => {
-        setStepStatus('waiting')
-    }
 
     return (
         <Box

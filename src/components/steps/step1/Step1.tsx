@@ -48,8 +48,6 @@ export default function Step1() {
     const [personName2, setPersonName2] = useState<string[]>([names[1]]);
     const [inputValue1, setInputValue1] = useState('')
     const [inputValue2, setInputValue2] = useState('')
-    console.log(personName1)
-    console.log(personName2)
 
     const handleChangeFirstSelect = (event: SelectChangeEvent<typeof personName1>) => {
         const {

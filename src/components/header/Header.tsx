@@ -21,7 +21,6 @@ const Header: React.FC = () => {
 
 
   useEffect (() => {
-    console.log(location.pathname);
       if(location.pathname == '/') {
         setAcive('Home')
       }else if(location.pathname == '/about-us') {
