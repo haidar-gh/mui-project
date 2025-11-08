@@ -4,56 +4,54 @@ import {
     Stack,
 
 } from '@mui/material'
-import {
-    Dashboard,
-    Person,
-    Group,
-    ExitToApp,
-} from '@mui/icons-material'
-import type { SvgIconComponent } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useSelector, useDispatch  } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../../app/store';
 import type { User } from '../../features/user/usersSlice';
-import { logoutUser } from '../../features/user/usersSlice'; 
+import { logoutUser } from '../../features/user/usersSlice';
+import DashboardIcon from '/public/images/Dashboard-icon.svg?react';
+import ProfileIcon from '/public/images/profile-icon.svg?react';
+import PartnerProgramIcon from '/public/images/partner-program-icon.svg?react';
+import ExitIcon from '/public/images/exit-icon.svg?react'
 
 interface MenuLinks {
-    id: string,
-    title: string,
-    icon_name: SvgIconComponent,
-    path: string,
+    id: string;
+    title: string;
+    icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+    path: string;
 }
 
 
 export default function SideBar() {
-    const users: User[] = useSelector((state:RootState) => state.user.users)
+    const users: User[] = useSelector((state: RootState) => state.user.users)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const menuArray: MenuLinks[] = [
-        {title:'Dashboard', icon_name: Dashboard , path: '/dashboard', id: '1'},
-        {title:'profile', icon_name: Person , path: '/profile', id: '2'},
-        {title:'partner program', icon_name: Group , path: '/partner-program', id: '3'}
-    ]
-    
-    const [activeLink, setActiveLink] = useState('Dashboard')
+        { title: 'dashboard', path: '/dashboard', id: '1', icon: DashboardIcon },
+        { title: 'profile', path: '/profile', id: '2', icon: ProfileIcon },
+        { title: 'partner program', path: '/partner-program', id: '3', icon: PartnerProgramIcon },
+    ];
+
+    const [activeLink, setActiveLink] = useState('dashboard')
 
     const drawerWidth = 270;
 
 
     const ChaneLinkHandler = (item: MenuLinks) => {
         setActiveLink(item.title)
+        console.log(item)
         navigate(item.path)
     }
 
-    const exitAccountHandler = ( ) => {
+    const exitAccountHandler = () => {
         const indexUserLogin = users.findIndex((index) => {
             return index.islogin === true
         })
-        navigate('/auth/login' ,{ state: { refresh: Date.now() } })
-        localStorage.setItem('page',"Login")
-        dispatch(logoutUser(users[indexUserLogin].email)) 
+        navigate('/auth/login', { state: { refresh: Date.now() } })
+        localStorage.setItem('page', "Login")
+        dispatch(logoutUser(users[indexUserLogin].email))
     }
 
     return (
@@ -79,24 +77,35 @@ export default function SideBar() {
 
             <Stack direction='column' alignItems={'start'}>
                 {menuArray.map((item) => {
-                    const Icon = item.icon_name
+                    const Icon = item.icon;
                     return (
                         <Button
                             key={item.id}
-                            sx={{ backgroundColor: 'transparent', color: 'white' }}
-                            startIcon={<Icon sx={{color : activeLink == item.title ? 'white' : '#ABABAB' }}/>}
+                            sx={{
+                                backgroundColor: 'transparent',
+                                color: activeLink === item.title ? 'white' : '#ABABAB',
+                                display: 'flex',
+                                textTransform: 'capitalize',
+                                justifyContent: 'flex-start',
+                                gap: 1,
+                            }}
                             onClick={() => ChaneLinkHandler(item)}
-                            >
-                            <Link to={item.path}   style={{ color: activeLink == item.title ? 'white' : '#ABABAB'  , textDecoration: 'none'  }}>{item.title}</Link>
+                            startIcon={
+                                <Icon
+                                    width={20}
+                                    height={20}
+                                />
+                            }
+                        >
+                            {item.title}
                         </Button>
-                    )
-
+                    );
                 })}
 
                 <Button
                     onClick={exitAccountHandler}
                     sx={{ backgroundColor: 'transparent', color: '#ABABAB' }}
-                    startIcon={<ExitToApp />}>
+                    startIcon={<ExitIcon style={{ width: '20px', height: '20px', color: '#ABABAB' }} />}>
                     Exit
                 </Button>
 
