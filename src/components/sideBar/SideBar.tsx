@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../../app/store';
 import type { User } from '../../features/user/usersSlice';
 import { logoutUser } from '../../features/user/usersSlice';
-import DashboardIcon from '/public/images/Dashboard-icon.svg?react';
+import DashboardIcon from '/public/images/dashboard-icon.svg?react';
 import ProfileIcon from '/public/images/profile-icon.svg?react';
 import PartnerProgramIcon from '/public/images/partner-program-icon.svg?react';
 import ExitIcon from '/public/images/exit-icon.svg?react'
