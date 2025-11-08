@@ -10,7 +10,7 @@ const columnsDashboard: GridColDef[] = [
         sortable: false,
         renderCell: (params) => (
             <Box display="flex" alignItems="center" gap={1}>
-                <img src='/public/images/USDT.png' style={{ width: 24, height: 24 }} />
+                <img src='/images/USDT.png' style={{ width: 24, height: 24 }} />
                 <span>{params.value}</span>
             </Box>
         ),
