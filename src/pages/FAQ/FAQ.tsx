@@ -58,7 +58,7 @@ export default function FAQ() {
 
                       <IconButton sx={{ color: 'white', marginLeft: '0px' }} >
 
-                        <img src='/public/images/Search-icon.svg' />
+                        <img src='/images/Search-icon.svg' />
 
                       </IconButton>
 
